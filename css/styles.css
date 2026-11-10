@@ -19,14 +19,14 @@
   --fvp-gold: #C99738;
   --fvp-dark: #1E293B;
   --fvp-muted: #64748B;
-  --fvp-border: rgba (28, 58, 39, 0.12);
+  --fvp-border: rgba(28, 58, 39, 0.12);
   --fvp-card-bg: #FFFFFF;
-  --fvp-radius-sm: 6 px;
-  --fvp-radius-md: 12 px;
-  --fvp-radius-lg: 16 px;
-  --fvp-shadow-sm: 0 2 px 8 px rgba (28, 58, 39, 0.05);
-  --fvp-shadow-md: 0 8 px 24 px rgba (28, 58, 39, 0.08);
-  --fvp-shadow-lg: 0 1 6px 40 px rgba (28, 58, 39, 0.12);
+  --fvp-radius-sm: 6px;
+  --fvp-radius-md: 12px;
+  --fvp-radius-lg: 16px;
+  --fvp-shadow-sm: 0 2px 8px rgba(28, 58, 39, 0.05);
+  --fvp-shadow-md: 0 8px 24px rgba(28, 58, 39, 0.08);
+  --fvp-shadow-lg: 0 16px 40px rgba(28, 58, 39, 0.12);
   --fvp-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --fvp-font-serif: 'Playfair Display', Georgia, serif;
   --fvp-font-mono: 'JetBrains Mono', monospace;
@@ -35,17 +35,17 @@
 /* Base Document Styling */
 html {
   scroll-behavior: smooth;
-  font-size: 16 px;
+  font-size: 16px;
 }
 
 body {
-  font-family: var (--fvp-font-sans);
-  background-color: var (--fvp-sand);
-  color: var (--fvp-dark);
+  font-family: var(--fvp-font-sans);
+  background-color: var(--fvp-sand);
+  color: var(--fvp-dark);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100 vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -55,9 +55,9 @@ main {
 }
 
 h1, h2, h3, .font-serif {
-  font-family: var (--fvp-font-serif);
-  color: var (--fvp-primary);
-  letter-spacing: -0.02 em;
+  font-family: var(--fvp-font-serif);
+  color: var(--fvp-primary);
+  letter-spacing: -0.02em;
 }
 
 h1, h2 {
@@ -73,43 +73,43 @@ h1, h2 {
    Navigation Bar (Top Bar Contract: Brand - Links - Action)
    ========================================================================== */
 .fvp-navbar {
-  background-color: rgba (250, 247, 242, 0.95);
-  backdrop-filter: blur (12 px);
-  -webkit-backdrop-filter: blur (12 px);
-  border-bottom: 1 x solid var (--fvp-border);
-  transition: all 0.25 s ease-in-out;
-  padding-top: 0.85 rem;
-  padding-bottom: 0.85 rem;
+  background-color: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--fvp-border);
+  transition: all 0.25s ease-in-out;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
   z-index: 1030;
 }
 
 .fvp-navbar.scrolled {
   background-color: #FFFFFF;
-  box-shadow: var (--fvp-shadow-sm);
-  padding-top: 0.6 rem;
-  padding-bottom: 0.6 rem;
+  box-shadow: var(--fvp-shadow-sm);
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 
 .fvp-brand {
   display: flex;
   align-items: center;
-  gap: 0.75 rem;
+  gap: 0.75rem;
   text-decoration: none;
-  color: var (--fvp-primary);
+  color: var(--fvp-primary);
   font-weight: 700;
-  transition: opacity 0.2 s ease;
+  transition: opacity 0.2s ease;
 }
 
 .fvp-brand:hover {
-  color: var (--fvp-primary-light);
+  color: var(--fvp-primary-light);
   opacity: 0.95;
 }
 
 .fvp-brand-logo {
-  width: 42 px;
-  height: 42 px;
-  border-radius: 50 %;
-  box-shadow: 0 2 px 6 px rgba (0, 0, 0, 0.08);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .fvp-brand-text {
@@ -119,54 +119,54 @@ h1, h2 {
 }
 
 .fvp-brand-title {
-  font-family: var (--fvp-font-serif);
-  font-size: 1.25 rem;
+  font-family: var(--fvp-font-serif);
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var (--fvp-primary);
-  letter-spacing: -0.01 em;
+  color: var(--fvp-primary);
+  letter-spacing: -0.01em;
 }
 
 .fvp-brand-subtitle {
-  font-size: 0.7 rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.12 em;
-  color: var (--fvp-terracotta);
+  letter-spacing: 0.12em;
+  color: var(--fvp-terracotta);
   font-weight: 600;
 }
 
 /* Nav Links */
 .fvp-nav-link {
-  font-size: 0.925 rem;
+  font-size: 0.925rem;
   font-weight: 500;
-  color: var (--fvp-dark);
-  padding: 0.5 rem 0.85 rem;
-  border-radius: var (--fvp-radius-sm);
-  transition: color 0.18 s ease, background-color 0.18 s ease;
+  color: var(--fvp-dark);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--fvp-radius-sm);
+  transition: color 0.18s ease, background-color 0.18s ease;
   position: relative;
 }
 
 .fvp-nav-link:hover,
 .fvp-nav-link.active {
-  color: var (--fvp-primary);
+  color: var(--fvp-primary);
 }
 
 .fvp-nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: 0.2 rem;
-  left: 0.85 rem;
-  right: 0.85 rem;
-  height: 2 px;
-  background-color: var (--fvp-primary);
-  border-radius: 2 px;
+  bottom: 0.2rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2px;
+  background-color: var(--fvp-primary);
+  border-radius: 2px;
 }
 
 /* Top Bar Announcement Banner */
 .fvp-announcement-bar {
-  background-color: var (--fvp-primary);
+  background-color: var(--fvp-primary);
   color: #FFFFFF;
-  font-size: 0.825 rem;
-  padding: 0.45 rem 1 rem;
+  font-size: 0.825rem;
+  padding: 0.45rem 1rem;
   text-align: center;
   font-weight: 500;
 }
@@ -174,114 +174,114 @@ h1, h2 {
 .fvp-announcement-bar a {
   color: #FFFFFF;
   text-decoration: underline;
-  margin-left: 0.5 rem;
+  margin-left: 0.5rem;
 }
 
 /* ==========================================================================
    Buttons & Interactive Elements
    ========================================================================== */
 .btn-patagonia {
-  background-color: var (--fvp-primary);
+  background-color: var(--fvp-primary);
   color: #FFFFFF;
-  border: 1 px solid var (--fvp-primary);
+  border: 1px solid var(--fvp-primary);
   font-weight: 600;
-  padding: 0.65 rem 1.4 rem;
-  border-radius: var (--fvp-radius-sm);
-  transition: all 0.2 s cubic-bezier (0.16, 1, 0.3, 1);
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--fvp-radius-sm);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5 rem;
+  gap: 0.5rem;
 }
 
 .btn-patagonia:hover {
-  background-color: var (--fvp-primary-hover);
+  background-color: var(--fvp-primary-hover);
   color: #FFFFFF;
-  transform: translateY (-1 px);
-  box-shadow: 0 4 px 12 px rgba (28, 58, 39, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(28, 58, 39, 0.25);
 }
 
 .btn-patagonia-accent {
-  background-color: var (--fvp-terracotta);
+  background-color: var(--fvp-terracotta);
   color: #FFFFFF;
-  border: 1 px solid var (--fvp-terracotta);
+  border: 1px solid var(--fvp-terracotta);
   font-weight: 600;
-  padding: 0.65 rem 1.4 rem;
-  border-radius: var (--fvp-radius-sm);
-  transition: all 0.2 s ease;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--fvp-radius-sm);
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5 rem;
+  gap: 0.5rem;
 }
 
 .btn-patagonia-accent:hover {
-  background-color: var (--fvp-terracotta-hover);
+  background-color: var(--fvp-terracotta-hover);
   color: #FFFFFF;
-  transform: translateY (-1 px);
-  box-shadow: 0 4 px 12 px rgba (217, 96, 56, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(217, 96, 56, 0.3);
 }
 
 .btn-patagonia-outline {
   background-color: transparent;
-  color: var (--fvp-primary);
-  border: 1.5 px solid var (--fvp-primary);
+  color: var(--fvp-primary);
+  border: 1.5px solid var(--fvp-primary);
   font-weight: 600;
-  padding: 0.6 rem 1.35 rem;
-  border-radius: var (--fvp-radius-sm);
-  transition: all 0.2 s ease;
+  padding: 0.6rem 1.35rem;
+  border-radius: var(--fvp-radius-sm);
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5 rem;
+  gap: 0.5rem;
 }
 
 .btn-patagonia-outline:hover {
-  background-color: var (--fvp-primary);
+  background-color: var(--fvp-primary);
   color: #FFFFFF;
-  transform: translateY (-1 px);
+  transform: translateY(-1px);
 }
 
 .btn-patagonia-light {
   background-color: #FFFFFF;
-  color: var (--fvp-primary);
-  border: 1 px solid var (--fvp-border);
+  color: var(--fvp-primary);
+  border: 1px solid var(--fvp-border);
   font-weight: 600;
-  padding: 0.6 rem 1.35 rem;
-  border-radius: var (--fvp-radius-sm);
-  transition: all 0.2 s ease;
+  padding: 0.6rem 1.35rem;
+  border-radius: var(--fvp-radius-sm);
+  transition: all 0.2s ease;
 }
 
 .btn-patagonia-light:hover {
-  background-color: var (--fvp-sand);
-  color: var (--fvp-primary-hover);
-  border-color: var (--fvp-primary);
+  background-color: var(--fvp-sand);
+  color: var(--fvp-primary-hover);
+  border-color: var(--fvp-primary);
 }
 
 /* ==========================================================================
    Product Cards & Grid System
    ========================================================================== */
 .fvp-card {
-  background-color: var (--fvp-card-bg);
-  border: 1 px solid var (--fvp-border);
-  border-radius: var (--fvp-radius-md);
+  background-color: var(--fvp-card-bg);
+  border: 1px solid var(--fvp-border);
+  border-radius: var(--fvp-radius-md);
   overflow: hidden;
-  transition: transform 0.25 s cubic-bezier (0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
-  height: 100 %;
+  height: 100%;
 }
 
 .fvp-card:hover {
-  transform: translateY (-4 px);
-  box-shadow: var (--fvp-shadow-md);
-  border-color: rgba (28, 58, 39, 0.25);
+  transform: translateY(-4px);
+  box-shadow: var(--fvp-shadow-md);
+  border-color: rgba(28, 58, 39, 0.25);
 }
 
 .fvp-card-img-wrapper {
   position: relative;
-  width: 100 %;
-  padding-top: 85 %; /* 4:3ish ratio */
+  width: 100%;
+  padding-top: 85%; /* 4:3ish ratio */
   background-color: #F8F5EE;
   overflow: hidden;
 }
@@ -290,58 +290,58 @@ h1, h2 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100 %;
-  height: 100 %;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  padding: 1.25 rem;
-  transition: transform 0.4 s ease;
+  padding: 1.25rem;
+  transition: transform 0.4s ease;
 }
 
 .fvp-card:hover .fvp-card-img {
-  transform: scale (1.04);
+  transform: scale(1.04);
 }
 
 .fvp-badge-tag {
   position: absolute;
-  top: 1 rem;
-  left: 1 rem;
-  background-color: rgba (28, 58, 39, 0.92);
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(28, 58, 39, 0.92);
   color: #FFFFFF;
-  font-size: 0.72 rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.04 em;
-  padding: 0.25 rem 0.65 rem;
-  border-radius: var (--fvp-radius-sm);
-  backdrop-filter: blur (4 px);
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--fvp-radius-sm);
+  backdrop-filter: blur(4px);
   z-index: 2;
 }
 
 .fvp-badge-accent {
-  background-color: var (--fvp-terracotta);
+  background-color: var(--fvp-terracotta);
 }
 
 .fvp-card-body {
-  padding: 1.35 rem;
+  padding: 1.35rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .fvp-card-category {
-  font-size: 0.75 rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.08 em;
-  color: var (--fvp-muted);
+  letter-spacing: 0.08em;
+  color: var(--fvp-muted);
   font-weight: 600;
-  margin-bottom: 0.35 rem;
+  margin-bottom: 0.35rem;
 }
 
 .fvp-card-title {
-  font-family: var (--fvp-font-sans);
-  font-size: 1.05 rem;
+  font-family: var(--fvp-font-sans);
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var (--fvp-dark);
-  margin-bottom: 0.5 rem;
+  color: var(--fvp-dark);
+  margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
@@ -503,83 +503,83 @@ h1, h2 {
   border: none;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var (--fvp-muted);
-  padding: 0.5 rem 1 rem;
-  border-radius: var (--fvp-radius-sm);
+  color: var(--fvp-muted);
+  padding: 0.5rem 1rem;
+  border-radius: var(--fvp-radius-sm);
   cursor: pointer;
-  transition: all 0.18 s ease;
+  transition: all 0.18s ease;
   white-space: nowrap;
 }
 
 .fvp-filter-btn:hover {
-  color: var (--fvp-primary);
-  background-color: var (--fvp-sand);
+  color: var(--fvp-primary);
+  background-color: var(--fvp-sand);
 }
 
 .fvp-filter-btn.active {
-  background-color: var (--fvp-primary);
+  background-color: var(--fvp-primary);
   color: #FFFFFF;
-  box-shadow: 0 2 px 8 px rgba (28, 58, 39, 0.15);
+  box-shadow: 0 2px 8px rgba(28, 58, 39, 0.15);
 }
 
 /* ==========================================================================
    Cart Offcanvas Drawer
    ========================================================================== */
 .fvp-offcanvas-cart {
-  width: 440 px;
-  max-width: 90 vw;
+  width: 440px;
+  max-width: 90vw;
   background-color: #FFFFFF;
 }
 
 .fvp-cart-item {
   display: flex;
-  gap: 1 rem;
-  padding: 1 rem 0;
-  border-bottom: 1 px solid rgba (0, 0, 0, 0.06);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   align-items: center;
 }
 
 .fvp-cart-item-img {
-  width: 72 px;
-  height: 72 px;
-  border-radius: var (--fvp-radius-sm);
+  width: 72px;
+  height: 72px;
+  border-radius: var(--fvp-radius-sm);
   background-color: #F8F5EE;
   object-fit: contain;
-  padding: 0.35 rem;
-  border: 1 px solid var (--fvp-border);
+  padding: 0.35rem;
+  border: 1px solid var(--fvp-border);
   flex-shrink: 0;
 }
 
 .fvp-cart-qty-btn {
-  width: 28 px;
-  height: 28 px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1 px solid var (--fvp-border);
+  border: 1px solid var(--fvp-border);
   background-color: #FFFFFF;
-  border-radius: var (--fvp-radius-sm);
-  font-size: 0.85 rem;
+  border-radius: var(--fvp-radius-sm);
+  font-size: 0.85rem;
   cursor: pointer;
-  color: var (--fvp-dark);
+  color: var(--fvp-dark);
 }
 
 .fvp-cart-qty-btn:hover {
-  background-color: var (--fvp-sand);
-  color: var (--fvp-primary);
+  background-color: var(--fvp-sand);
+  color: var(--fvp-primary);
 }
 
 .fvp-cart-count-badge {
-  font-size: 0.7 rem;
+  font-size: 0.7rem;
   position: absolute;
-  top: -4 px;
-  right: -6 px;
-  background-color: var (--fvp-terracotta);
+  top: -4px;
+  right: -6px;
+  background-color: var(--fvp-terracotta);
   color: #FFFFFF;
-  border-radius: 50 %;
-  width: 20 px;
-  height: 20 px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -589,27 +589,27 @@ h1, h2 {
 /* Floating cart button for mobile */
 .fvp-float-cart-btn {
   position: fixed;
-  bottom: 1.5 rem;
-  right: 1.5 rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 1020;
-  width: 58 px;
-  height: 58 px;
-  border-radius: 50 %;
-  background-color: var (--fvp-primary);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: var(--fvp-primary);
   color: #FFFFFF;
-  box-shadow: 0 8 px 24 px rgba (28, 58, 39, 0.35);
+  box-shadow: 0 8px 24px rgba(28, 58, 39, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4 rem;
+  font-size: 1.4rem;
   border: none;
   cursor: pointer;
-  transition: transform 0.2 s ease;
+  transition: transform 0.2s ease;
 }
 
 .fvp-float-cart-btn:hover {
-  transform: scale (1.08);
-  background-color: var (--fvp-primary-hover);
+  transform: scale(1.08);
+  background-color: var(--fvp-primary-hover);
 }
 
 /* ==========================================================================
@@ -617,52 +617,52 @@ h1, h2 {
    ========================================================================== */
 .fvp-pdp-gallery-main {
   background-color: #F8F5EE;
-  border: 1 px solid var (--fvp-border);
-  border-radius: var (--fvp-radius-lg);
-  padding: 2.5 rem;
+  border: 1px solid var(--fvp-border);
+  border-radius: var(--fvp-radius-lg);
+  padding: 2.5rem;
   text-align: center;
-  margin-bottom: 1 rem;
+  margin-bottom: 1rem;
 }
 
 .fvp-pdp-gallery-main img {
-  max-height: 480 px;
+  max-height: 480px;
   width: auto;
-  max-width: 100 %;
+  max-width: 100%;
   object-fit: contain;
-  transition: transform 0.3 s ease;
+  transition: transform 0.3s ease;
 }
 
 .fvp-pdp-thumbs {
   display: flex;
-  gap: 0.75 rem;
+  gap: 0.75rem;
   overflow-x: auto;
-  padding-bottom: 0.5 rem;
+  padding-bottom: 0.5rem;
 }
 
 .fvp-pdp-thumb {
-  width: 80 px;
-  height: 80 px;
-  border-radius: var (--fvp-radius-sm);
+  width: 80px;
+  height: 80px;
+  border-radius: var(--fvp-radius-sm);
   background-color: #F8F5EE;
-  border: 2 px solid transparent;
-  padding: 0.4 rem;
+  border: 2px solid transparent;
+  padding: 0.4rem;
   cursor: pointer;
-  transition: border-color 0.15 s ease;
+  transition: border-color 0.15s ease;
   flex-shrink: 0;
 }
 
 .fvp-pdp-thumb.active {
-  border-color: var (--fvp-primary);
+  border-color: var(--fvp-primary);
 }
 
 .fvp-nutrition-table {
-  width: 100 %;
-  font-size: 0.875 rem;
+  width: 100%;
+  font-size: 0.875rem;
 }
 
 .fvp-nutrition-table tr td {
-  padding: 0.5 rem 0.75 rem;
-  border-bottom: 1 px solid rgba (0, 0, 0, 0.06);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .fvp-nutrition-table tr:last-child td {
@@ -674,29 +674,29 @@ h1, h2 {
    ========================================================================== */
 .fvp-admin-sidebar {
   background-color: #FFFFFF;
-  border-right: 1 px solid var (--fvp-border);
-  min-height: calc (100 vh - 80 px);
+  border-right: 1px solid var(--fvp-border);
+  min-height: calc(100vh - 80px);
 }
 
 .fvp-stat-box {
   background-color: #FFFFFF;
-  border: 1 px solid var (--fvp-border);
-  border-radius: var (--fvp-radius-md);
-  padding: 1.5 rem;
-  box-shadow: var (--fvp-shadow-sm);
+  border: 1px solid var(--fvp-border);
+  border-radius: var(--fvp-radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--fvp-shadow-sm);
 }
 
 .fvp-stat-val {
-  font-family: var (--fvp-font-mono);
-  font-size: 2 rem;
+  font-family: var(--fvp-font-mono);
+  font-size: 2rem;
   font-weight: 700;
-  color: var (--fvp-primary);
+  color: var(--fvp-primary);
 }
 
 .fvp-badge-status {
-  padding: 0.25 rem 0.65 rem;
-  border-radius: var (--fvp-radius-sm);
-  font-size: 0.75 rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--fvp-radius-sm);
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
@@ -719,16 +719,16 @@ h1, h2 {
    Footer
    ========================================================================== */
 .fvp-footer {
-  background-color: var (--fvp-primary);
-  color: rgba (255, 255, 255, 0.85);
-  padding: 4.5 rem 0 2 rem;
+  background-color: var(--fvp-primary);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 4.5rem 0 2rem;
   margin-top: auto;
 }
 
 .fvp-footer a {
-  color: rgba (255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
-  transition: color 0.18 s ease;
+  transition: color 0.18s ease;
 }
 
 .fvp-footer a:hover {
@@ -737,59 +737,59 @@ h1, h2 {
 
 .fvp-footer-title {
   color: #FFFFFF;
-  font-family: var (--fvp-font-sans);
-  font-size: 1 rem;
+  font-family: var(--fvp-font-sans);
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05 em;
-  margin-bottom: 1.25 rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
 }
 
 .fvp-footer-bottom {
-  border-top: 1 px solid rgba (255, 255, 255, 0.12);
-  padding-top: 1.75 rem;
-  margin-top: 3.5 rem;
-  font-size: 0.85 rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 1.75rem;
+  margin-top: 3.5rem;
+  font-size: 0.85rem;
 }
 
 /* ==========================================================================
    Search Modal & Utilities
    ========================================================================== */
 .fvp-search-input {
-  font-size: 1.15 rem;
-  padding: 0.85 rem 1.25 rem;
-  border-radius: var (--fvp-radius-md);
-  border: 1.5 px solid var (--fvp-border);
+  font-size: 1.15rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--fvp-radius-md);
+  border: 1.5px solid var(--fvp-border);
 }
 
 .fvp-search-input:focus {
-  border-color: var (--fvp-primary);
-  box-shadow: 0 0 0 3 px rgba (28, 58, 39, 0.12);
+  border-color: var(--fvp-primary);
+  box-shadow: 0 0 0 3px rgba(28, 58, 39, 0.12);
 }
 
 .fvp-search-result-item {
   display: flex;
   align-items: center;
-  gap: 1 rem;
-  padding: 0.75 rem 1 rem;
-  border-radius: var (--fvp-radius-sm);
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--fvp-radius-sm);
   text-decoration: none;
-  color: var (--fvp-dark);
-  transition: background-color 0.15 s ease;
+  color: var(--fvp-dark);
+  transition: background-color 0.15s ease;
 }
 
 .fvp-search-result-item:hover {
-  background-color: var (--fvp-sand);
-  color: var (--fvp-primary);
+  background-color: var(--fvp-sand);
+  color: var(--fvp-primary);
 }
 
 .fvp-search-result-img {
-  width: 50 px;
-  height: 50 px;
-  border-radius: var (--fvp-radius-sm);
+  width: 50px;
+  height: 50px;
+  border-radius: var(--fvp-radius-sm);
   background-color: #F8F5EE;
   object-fit: contain;
-  padding: 0.25 rem;
+  padding: 0.25rem;
 }
 
 /* Toast container custom position */

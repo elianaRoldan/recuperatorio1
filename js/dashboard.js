@@ -322,6 +322,19 @@ export const Dashboard = {
       }
     });
 
+    // Probar conexión Firebase
+    document.getElementById('btn-test-firebase')?.addEventListener('click', async () => {
+      const statusBox = document.getElementById('connection-status-box');
+      statusBox.innerHTML = `<div class="text-muted small py-1"><span class="spinner-border spinner-border-sm me-2"></span>Inicializando Firebase y verificando credenciales...</div>`;
+      
+      const result = await API.testFirebaseConnection();
+      if (result.success) {
+        statusBox.innerHTML = `<div class="alert alert-success py-2 mb-0 small"><i class="bi bi-check-circle-fill me-1"></i>${result.message}</div>`;
+      } else {
+        statusBox.innerHTML = `<div class="alert alert-danger py-2 mb-0 small"><i class="bi bi-exclamation-triangle-fill me-1"></i>${result.message}</div>`;
+      }
+    });
+
     // Crear / Sincronizar las 6 Hojas en el mismo documento de Google Sheets
     document.getElementById('btn-setup-sheets')?.addEventListener('click', async () => {
       const url = document.getElementById('input-apps-script-url').value.trim();

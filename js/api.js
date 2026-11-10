@@ -1,8 +1,4 @@
-/**
- * @license
- * Fruit Valley Patagonia - API Service Facade
- * Centraliza la persistencia e integraciones con LocalStorage, Google Apps Script / Sheets y Firebase.
- */
+import { FirebaseService, firebaseConfig } from './firebase-config.js';
 
 /**
  * Mapea nombres de archivos de imagen de la hoja de cálculo a los assets del proyecto
@@ -397,6 +393,32 @@ export const API = {
       }
     }
 
+    // Si está en modo Firebase
+    if (settings.backendMode === 'firebase') {
+      try {
+        const db = await FirebaseService.getFirestore();
+        if (db) {
+          const snapshot = await db.collection('products').get();
+          if (!snapshot.empty) {
+            const list = [];
+            snapshot.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+            localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(list));
+            return list.filter(p => {
+              const matchCategory = (category === 'all' || !category) ? true : (p.category === category);
+              const matchSearch = !search ? true : (
+                p.name.toLowerCase().includes(search.toLowerCase()) ||
+                p.description.toLowerCase().includes(search.toLowerCase()) ||
+                p.categoryName.toLowerCase().includes(search.toLowerCase())
+              );
+              return matchCategory && matchSearch;
+            });
+          }
+        }
+      } catch (fbErr) {
+        console.warn("Fallo leyendo productos desde Firestore, recurriendo a LocalStorage:", fbErr);
+      }
+    }
+
     // Modo LocalStorage por defecto
     let products = [];
     try {
@@ -458,6 +480,18 @@ export const API = {
       }
     }
 
+    // Conexión Firebase si está activo
+    if (settings.backendMode === 'firebase') {
+      try {
+        const db = await FirebaseService.getFirestore();
+        if (db) {
+          await db.collection('products').doc(product.id).set(product, { merge: true });
+        }
+      } catch (err) {
+        console.warn("Error enviando producto a Firebase:", err);
+      }
+    }
+
     // Persistencia LocalStorage
     const products = await this.getProducts('all', '');
     const index = products.findIndex(p => p.id === product.id);
@@ -486,6 +520,17 @@ export const API = {
         });
       } catch (err) {
         console.warn("Error al borrar en Apps Script:", err);
+      }
+    }
+
+    if (settings.backendMode === 'firebase') {
+      try {
+        const db = await FirebaseService.getFirestore();
+        if (db) {
+          await db.collection('products').doc(id).delete();
+        }
+      } catch (err) {
+        console.warn("Error al borrar en Firebase:", err);
       }
     }
 
@@ -518,6 +563,18 @@ export const API = {
         });
       } catch (err) {
         console.warn("No se pudo enviar consulta a Google Sheets, guardando en local:", err);
+      }
+    }
+
+    // Intentar enviar a Firebase
+    if (settings.backendMode === 'firebase') {
+      try {
+        const db = await FirebaseService.getFirestore();
+        if (db) {
+          await db.collection('inquiries').doc(newInquiry.id).set(newInquiry);
+        }
+      } catch (err) {
+        console.warn("No se pudo enviar consulta a Firebase, guardando en local:", err);
       }
     }
 
@@ -554,6 +611,23 @@ export const API = {
         }
       } catch (e) {
         console.warn("Fallo obteniendo consultas de Apps Script:", e);
+      }
+    }
+
+    if (settings.backendMode === 'firebase') {
+      try {
+        const db = await FirebaseService.getFirestore();
+        if (db) {
+          const snapshot = await db.collection('inquiries').get();
+          if (!snapshot.empty) {
+            const list = [];
+            snapshot.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
+            localStorage.setItem(STORAGE_KEYS.INQUIRIES, JSON.stringify(list));
+            return list;
+          }
+        }
+      } catch (e) {
+        console.warn("Fallo obteniendo consultas de Firebase:", e);
       }
     }
 
@@ -605,6 +679,13 @@ export const API = {
     } catch (err) {
       return { success: false, message: `Error de conexión: ${err.message}. Asegúrate de haber publicado como 'Cualquier usuario' (Anyone).` };
     }
+  },
+
+  /**
+   * Prueba de conectividad con Firebase Cloud
+   */
+  async testFirebaseConnection() {
+    return await FirebaseService.testConnection();
   },
 
   /**
