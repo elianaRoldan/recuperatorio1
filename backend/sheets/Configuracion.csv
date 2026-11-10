@@ -1,0 +1,8 @@
+Clave,Valor,Descripcion,UltimaActualizacion
+storeName,Fruit Valley Patagonia,Nombre comercial de la tienda oficial,2026-03-01T00:00:00Z
+whatsappNumber,+5492984926445,Número oficial de WhatsApp para recepción de pedidos,2026-11-09T00:00:00Z
+contactEmail,elianaenoriega@gmail.com,Correo de atención al cliente y recepción de consultas,2026-11-09T00:00:00Z
+currency,ARS,Moneda oficial de facturación,2026-11-09T00:00:00Z
+freeShippingMin,18000,Monto mínimo en pesos para envío bonificado a todo el país,2026-11-09T00:00:00Z
+activePromoCode,PATAGONIA10,Código de cupón vigente para 10% de descuento,2026-11-09T00:00:00Z
+originLocation,"Luis Beltrán, Valle Medio, Río Negro, Patagonia Argentina",Dirección de la planta y chacra,2026-11-09T00:00:00Z

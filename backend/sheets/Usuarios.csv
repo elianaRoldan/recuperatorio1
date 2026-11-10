@@ -1,0 +1,5 @@
+ID,Nombre,Email,Telefono,TipoNegocio,FechaRegistro,Estado
+USR-101,Carolina Gómez,carolina@ejemplo.com,+54 9 11 44556677,Consumidor Final,2026-02-15T10:30:00Z,Activo
+USR-102,Martín Rivas,mrivas@dieteticaspatagonia.com,+54 9 299 443211,Dietética / Comercio Natural,2026-02-20T14:15:00Z,Activo
+USR-103,Valentina Morales,valentina.m@gmail.com,+54 9 298 455667,Consumidor Final,2026-03-01T09:00:00Z,Activo
+USR-104,Esteban Bianchi,compras@vitalmarket.com.ar,+54 9 11 67889900,Distribuidor Mayorista,2026-03-05T16:45:00Z,Activo
