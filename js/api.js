@@ -316,7 +316,7 @@ const STORAGE_KEYS = {
 // Configuración por defecto (Totalmente en la nube: Google Apps Script & Firebase)
 const DEFAULT_SETTINGS = {
   backendMode: "google_apps_script", // 'google_apps_script' | 'firebase'
-  appsScriptUrl: "https://script.google.com/macros/s/AKfycbzEFCImnya0BcAXX65dXRfkBbQlS6-Wf3mrJuT_c3a2d4l2CWMrY0folVyhDrPVMxKC/exec", // URL provista por el usuario
+  appsScriptUrl: "https://script.google.com/macros/s/AKfycbzJaS2K0SKurqd8ucarVoe2s94Eher4XmcC0-AuHmF84d4NlHzKM9VPGLqxIVu3fZBq/exec", // URL oficial activa
   whatsappNumber: "+5492984926445", // Número oficial para checkout y atención
   contactEmail: "elianaenoriega@gmail.com", // Email oficial para consultas
   storeName: "Fruit Valley Patagonia",
@@ -336,8 +336,8 @@ export const API = {
       const data = localStorage.getItem(STORAGE_KEYS.SETTINGS);
       const parsed = data ? { ...DEFAULT_SETTINGS, ...JSON.parse(data) } : { ...DEFAULT_SETTINGS };
       // Actualizar a la URL de Apps Script provista por el usuario
-      if (!parsed.appsScriptUrl || parsed.appsScriptUrl.includes("AKfycbyGes") || parsed.appsScriptUrl.includes("localhost")) {
-        parsed.appsScriptUrl = "https://script.google.com/macros/s/AKfycbzEFCImnya0BcAXX65dXRfkBbQlS6-Wf3mrJuT_c3a2d4l2CWMrY0folVyhDrPVMxKC/exec";
+      if (!parsed.appsScriptUrl || !parsed.appsScriptUrl.includes("AKfycbzJaS2K0SKurqd8ucarVoe2s94Eher4XmcC0")) {
+        parsed.appsScriptUrl = "https://script.google.com/macros/s/AKfycbzJaS2K0SKurqd8ucarVoe2s94Eher4XmcC0-AuHmF84d4NlHzKM9VPGLqxIVu3fZBq/exec";
       }
       if (parsed.backendMode === 'local') {
         parsed.backendMode = 'google_apps_script';
@@ -383,9 +383,12 @@ export const API = {
         if (res.ok) {
           const json = await res.json();
           if (json.status === 'success' && Array.isArray(json.data)) {
-            // Guardar copia local en caché
-            localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(json.data));
-            return json.data;
+            const mapped = json.data.map(p => ({
+              ...p,
+              image: resolveProductImage(p.image)
+            }));
+            localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(mapped));
+            return mapped;
           }
         }
       } catch (err) {

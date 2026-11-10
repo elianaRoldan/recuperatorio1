@@ -344,7 +344,7 @@ export const Dashboard = {
         return;
       }
 
-      statusBox.innerHTML = `<div class="text-muted small py-1"><span class="spinner-border spinner-border-sm me-2"></span>Creando y formateando las 6 hojas en Google Sheets (Productos, Usuarios, Consultas, Categorias, Configuracion, Administradores)...</div>`;
+      statusBox.innerHTML = `<div class="text-muted small py-1"><span class="spinner-border spinner-border-sm me-2"></span>Creando y sincronizando las 3 hojas oficiales en Google Sheets (Productos, Consultas, Usuarios)...</div>`;
       const result = await API.setupGoogleSheets(url);
 
       if (result.success) {

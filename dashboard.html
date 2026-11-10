@@ -207,7 +207,7 @@
                     <!-- Configuración URL Apps Script -->
                     <div class="mb-3">
                       <label for="input-apps-script-url" class="form-label fw-bold text-dark small">URL del Web App de Google Apps Script</label>
-                      <input type="url" class="form-control font-mono small" id="input-apps-script-url" placeholder="https://script.google.com/macros/s/AKfycbzEFCImnya0BcAXX65dXRfkBbQlS6-Wf3mrJuT_c3a2d4l2CWMrY0folVyhDrPVMxKC/exec" value="https://script.google.com/macros/s/AKfycbzEFCImnya0BcAXX65dXRfkBbQlS6-Wf3mrJuT_c3a2d4l2CWMrY0folVyhDrPVMxKC/exec">
+                      <input type="url" class="form-control font-mono small" id="input-apps-script-url" placeholder="https://script.google.com/macros/s/AKfycbzJaS2K0SKurqd8ucarVoe2s94Eher4XmcC0-AuHmF84d4NlHzKM9VPGLqxIVu3fZBq/exec" value="https://script.google.com/macros/s/AKfycbzJaS2K0SKurqd8ucarVoe2s94Eher4XmcC0-AuHmF84d4NlHzKM9VPGLqxIVu3fZBq/exec">
                       <div class="form-text small">URL oficial del Web App de Google Apps Script publicada para producción.</div>
                     </div>
 
@@ -229,19 +229,19 @@
                         <i class="bi bi-fire me-1 text-danger"></i>Probar Conexión Firebase
                       </button>
                       <button type="button" class="btn btn-outline-success" id="btn-setup-sheets">
-                        <i class="bi bi-magic me-1"></i>Crear / Sincronizar las 6 Hojas en Sheets
+                        <i class="bi bi-magic me-1"></i>Crear / Sincronizar las 3 Hojas en Sheets
                       </button>
                       <button type="button" class="btn btn-patagonia" id="btn-save-settings">
                         <i class="bi bi-floppy me-1"></i>Guardar Configuración
                       </button>
                     </div>
 
-                    <!-- Estructura de las 6 Hojas en el mismo Documento -->
+                    <!-- Estructura de las 3 Hojas en el Documento -->
                     <div class="p-3 bg-white rounded-3 border">
                       <h6 class="fw-bold text-dark mb-2 font-serif">
-                        <i class="bi bi-folder2-open text-success me-2"></i>Hojas del Documento Google Sheets
+                        <i class="bi bi-folder2-open text-success me-2"></i>Hojas del Documento Google Sheets (3 Hojas)
                       </h6>
-                      <p class="small text-muted mb-3">Tu documento contiene las 6 hojas requeridas para la operación integral:</p>
+                      <p class="small text-muted mb-3">Tu documento contiene las 3 hojas oficiales simplificadas:</p>
                       
                       <div class="list-group list-group-flush small">
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
@@ -253,38 +253,17 @@
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
                           <div>
-                            <strong class="text-dark">2. Usuarios</strong>
-                            <div class="text-muted" style="font-size: 0.75rem;">Columnas: ID, Nombre, Email, Telefono, TipoNegocio, FechaRegistro, Estado</div>
-                          </div>
-                          <a href="/backend/sheets/Usuarios.csv" download class="btn btn-sm btn-light border text-secondary"><i class="bi bi-download me-1"></i>CSV</a>
-                        </div>
-                        <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                          <div>
-                            <strong class="text-dark">3. Consultas</strong>
+                            <strong class="text-dark">2. Consultas</strong>
                             <div class="text-muted" style="font-size: 0.75rem;">Columnas: ID, Fecha, Nombre, Email, Telefono, Tipo, Asunto, Mensaje, Estado</div>
                           </div>
                           <a href="/backend/sheets/Consultas.csv" download class="btn btn-sm btn-light border text-secondary"><i class="bi bi-download me-1"></i>CSV</a>
                         </div>
                         <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
                           <div>
-                            <strong class="text-dark">4. Categorias</strong>
-                            <div class="text-muted" style="font-size: 0.75rem;">Columnas: ID, Nombre, Slug, Descripcion, Orden, Activo</div>
+                            <strong class="text-dark">3. Usuarios</strong>
+                            <div class="text-muted" style="font-size: 0.75rem;">Columnas: ID, Nombre, Email, Telefono, TipoNegocio, FechaRegistro, Estado</div>
                           </div>
-                          <a href="/backend/sheets/Categorias.csv" download class="btn btn-sm btn-light border text-secondary"><i class="bi bi-download me-1"></i>CSV</a>
-                        </div>
-                        <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                          <div>
-                            <strong class="text-dark">5. Configuracion</strong>
-                            <div class="text-muted" style="font-size: 0.75rem;">Columnas: Clave, Valor, Descripcion, UltimaActualizacion</div>
-                          </div>
-                          <a href="/backend/sheets/Configuracion.csv" download class="btn btn-sm btn-light border text-secondary"><i class="bi bi-download me-1"></i>CSV</a>
-                        </div>
-                        <div class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">
-                          <div>
-                            <strong class="text-dark">6. Administradores</strong>
-                            <div class="text-muted" style="font-size: 0.75rem;">Columnas: ID, Nombre, Email, Rol, NivelAcceso, UltimoIngreso</div>
-                          </div>
-                          <a href="/backend/sheets/Administradores.csv" download class="btn btn-sm btn-light border text-secondary"><i class="bi bi-download me-1"></i>CSV</a>
+                          <a href="/backend/sheets/Usuarios.csv" download class="btn btn-sm btn-light border text-secondary"><i class="bi bi-download me-1"></i>CSV</a>
                         </div>
                       </div>
                     </div>

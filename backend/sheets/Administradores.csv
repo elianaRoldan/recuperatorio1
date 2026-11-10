@@ -1,4 +1,0 @@
-ID,Nombre,Email,Rol,NivelAcceso,UltimoIngreso
-ADM-01,Administrador General,admin@fruitvalley.com,SuperAdmin,Total (CRUD Productos + Consultas + Configuración),2026-03-09T08:00:00Z
-ADM-02,Gerencia de Producción,produccion@fruitvalley.com,Editor,Stock y Catálogo de Productos,2026-03-08T17:30:00Z
-ADM-03,Atención al Cliente,soporte@fruitvalley.com,Operador,Gestión de Consultas y Pedidos,2026-03-09T09:15:00Z
