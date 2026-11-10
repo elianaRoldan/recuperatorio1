@@ -263,6 +263,7 @@
     <!-- Script de Catálogo y Detalle Modal -->
     <script type="module">
       import { API } from './js/api.js';
+      import { App } from './js/main.js';
 
       let currentCategory = 'all';
       let currentSearch = '';
@@ -350,8 +351,8 @@
           btn.addEventListener('click', (e) => {
             const pId = e.currentTarget.dataset.productId;
             const p = allProducts.find(x => x.id === pId);
-            if (p && window.Cart) {
-              window.Cart.addItem(p);
+            if (p) {
+              App.addToCart(p, 1);
             }
           });
         });
@@ -375,12 +376,18 @@
 
         const addBtn = document.getElementById('modal-add-btn');
         addBtn.onclick = () => {
-          if (window.Cart) window.Cart.addItem(p);
-          bootstrap.Modal.getInstance(document.getElementById('productDetailModal')).hide();
+          App.addToCart(p, 1);
+          if (window.bootstrap) {
+            const modalEl = document.getElementById('productDetailModal');
+            const instance = window.bootstrap.Modal.getInstance(modalEl);
+            if (instance) instance.hide();
+          }
         };
 
-        const modal = new bootstrap.Modal(document.getElementById('productDetailModal'));
-        modal.show();
+        if (window.bootstrap) {
+          const modal = new window.bootstrap.Modal(document.getElementById('productDetailModal'));
+          modal.show();
+        }
       };
 
       // Listeners de Filtros

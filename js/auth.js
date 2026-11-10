@@ -1,8 +1,4 @@
-/**
- * @license
- * Fruit Valley Patagonia - Authentication Service
- * Gestiona sesiones, login, registro y roles de usuario.
- */
+import { FirebaseService } from './firebase-config.js';
 
 const AUTH_STORAGE_KEY = "fvp_current_user";
 const USERS_STORAGE_KEY = "fvp_registered_users";
@@ -59,14 +55,60 @@ export const Auth = {
   },
 
   /**
-   * Inicia sesión verificando credenciales
+   * Inicia sesión verificando credenciales con Firebase y local
    */
-  login(email, password) {
+  async login(email, password) {
     const cleanEmail = (email || '').trim().toLowerCase();
     const cleanPass = (password || '').trim();
 
+    let firebaseUser = null;
+    try {
+      const fbAuth = await FirebaseService.getAuth();
+      if (fbAuth) {
+        try {
+          const cred = await fbAuth.signInWithEmailAndPassword(cleanEmail, cleanPass);
+          firebaseUser = cred.user;
+        } catch (fbErr) {
+          // Si el usuario existe localmente (ej: admin o demo), auto-aprovisionar en Firebase Auth
+          if (fbErr.code === 'auth/user-not-found' || fbErr.code === 'auth/invalid-credential') {
+            const users = this.getUsers();
+            const existingLocal = users.find(u => u.email.toLowerCase() === cleanEmail && u.passwordHash === cleanPass);
+            if (existingLocal) {
+              try {
+                const newCred = await fbAuth.createUserWithEmailAndPassword(cleanEmail, cleanPass);
+                firebaseUser = newCred.user;
+                if (existingLocal.name) {
+                  await firebaseUser.updateProfile({ displayName: existingLocal.name }).catch(() => {});
+                }
+              } catch (createErr) {
+                console.info("Info auto-provisioning Firebase:", createErr.message);
+              }
+            }
+          } else {
+            console.info("Aviso Firebase Auth login:", fbErr.code, fbErr.message);
+          }
+        }
+      }
+    } catch (e) {}
+
     const users = this.getUsers();
-    const user = users.find(u => u.email.toLowerCase() === cleanEmail);
+    let user = users.find(u => u.email.toLowerCase() === cleanEmail);
+
+    // Si autenticó exitosamente en Firebase pero no está en el navegador actual
+    if (firebaseUser && !user) {
+      user = {
+        id: firebaseUser.uid || ('user-' + Date.now()),
+        name: firebaseUser.displayName || cleanEmail.split('@')[0],
+        email: cleanEmail,
+        passwordHash: cleanPass,
+        role: cleanEmail.includes('admin') ? 'admin' : 'customer',
+        businessType: 'Consumidor Final',
+        phone: '',
+        createdAt: new Date().toISOString()
+      };
+      users.push(user);
+      localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
+    }
 
     if (!user) {
       return { success: false, message: "El correo electrónico no se encuentra registrado." };
@@ -91,21 +133,48 @@ export const Auth = {
   },
 
   /**
-   * Registra un nuevo usuario
+   * Registra un nuevo usuario en Firebase Auth y almacenamiento
    */
-  register(userData) {
+  async register(userData) {
     const cleanEmail = (userData.email || '').trim().toLowerCase();
+    const cleanPass = (userData.password || '').trim();
     const users = this.getUsers();
 
     if (users.some(u => u.email.toLowerCase() === cleanEmail)) {
       return { success: false, message: "Ya existe una cuenta registrada con este correo electrónico." };
     }
 
+    // Crear usuario en Firebase Auth
+    let fbUid = null;
+    try {
+      const fbAuth = await FirebaseService.getAuth();
+      if (fbAuth) {
+        try {
+          const cred = await fbAuth.createUserWithEmailAndPassword(cleanEmail, cleanPass);
+          if (cred && cred.user) {
+            fbUid = cred.user.uid;
+            if (userData.name) {
+              await cred.user.updateProfile({ displayName: userData.name.trim() }).catch(() => {});
+            }
+          }
+        } catch (fbErr) {
+          if (fbErr.code === 'auth/email-already-in-use') {
+            try {
+              const cred = await fbAuth.signInWithEmailAndPassword(cleanEmail, cleanPass);
+              if (cred && cred.user) fbUid = cred.user.uid;
+            } catch (_) {}
+          } else {
+            console.info("Aviso Firebase Auth register:", fbErr.code, fbErr.message);
+          }
+        }
+      }
+    } catch (e) {}
+
     const newUser = {
-      id: 'user-' + Date.now(),
+      id: fbUid || ('user-' + Date.now()),
       name: userData.name.trim(),
       email: cleanEmail,
-      passwordHash: userData.password.trim(),
+      passwordHash: cleanPass,
       role: "customer", // Por seguridad los registros son tipo cliente
       businessType: userData.businessType || "Consumidor Final",
       phone: userData.phone || "",

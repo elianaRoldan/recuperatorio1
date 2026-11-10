@@ -401,7 +401,8 @@ export const API = {
       try {
         const db = await FirebaseService.getFirestore();
         if (db) {
-          const snapshot = await db.collection('products').get();
+          const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error("Timeout Firestore")), 3500));
+          const snapshot = await Promise.race([db.collection('products').get(), timeout]);
           if (!snapshot.empty) {
             const list = [];
             snapshot.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
@@ -418,7 +419,7 @@ export const API = {
           }
         }
       } catch (fbErr) {
-        console.warn("Fallo leyendo productos desde Firestore, recurriendo a LocalStorage:", fbErr);
+        console.warn("Fallo leyendo productos desde Firestore, recurriendo a almacenamiento local:", fbErr.message);
       }
     }
 
@@ -621,7 +622,8 @@ export const API = {
       try {
         const db = await FirebaseService.getFirestore();
         if (db) {
-          const snapshot = await db.collection('inquiries').get();
+          const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error("Timeout Firestore")), 3500));
+          const snapshot = await Promise.race([db.collection('inquiries').get(), timeout]);
           if (!snapshot.empty) {
             const list = [];
             snapshot.forEach(doc => list.push({ id: doc.id, ...doc.data() }));
@@ -630,7 +632,7 @@ export const API = {
           }
         }
       } catch (e) {
-        console.warn("Fallo obteniendo consultas de Firebase:", e);
+        console.warn("Fallo obteniendo consultas de Firebase, recurriendo a local:", e.message);
       }
     }
 
