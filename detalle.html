@@ -90,7 +90,7 @@
           <!-- Columna Izquierda: Galería de Imágenes -->
           <div class="col-lg-6">
             <div class="fvp-pdp-gallery-main shadow-sm">
-              <img id="pdp-main-image" src="/assets/aistudio/Todoslosproductos_21bbed5e.jpg" alt="Producto Fruit Valley Patagonia" class="img-fluid" />
+              <img id="pdp-main-image" src="/multimedia/Todoslosproductos.jpg" alt="Producto Fruit Valley Patagonia" class="img-fluid" />
             </div>
 
             <!-- Miniaturas -->
@@ -362,8 +362,8 @@
         const thumbsContainer = document.getElementById('pdp-thumbs-container');
         thumbsContainer.innerHTML = `
           <img src="${currentProduct.image}" alt="${currentProduct.name}" class="fvp-pdp-thumb active" onclick="document.getElementById('pdp-main-image').src = this.src" />
-          <img src="/assets/aistudio/Todoslosproductos_21bbed5e.jpg" alt="Línea de productos" class="fvp-pdp-thumb" onclick="document.getElementById('pdp-main-image').src = this.src" />
-          <img src="/assets/aistudio/Chipsygranolas_0e089a2b.jpg" alt="Detalle empaque" class="fvp-pdp-thumb" onclick="document.getElementById('pdp-main-image').src = this.src" />
+          <img src="/multimedia/Todoslosproductos.jpg" alt="Línea de productos" class="fvp-pdp-thumb" onclick="document.getElementById('pdp-main-image').src = this.src" />
+          <img src="/multimedia/Chipsygranolas.jpg" alt="Detalle empaque" class="fvp-pdp-thumb" onclick="document.getElementById('pdp-main-image').src = this.src" />
         `;
 
         // Pestañas

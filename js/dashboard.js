@@ -179,7 +179,7 @@ export const Dashboard = {
       stock: parseInt(document.getElementById('modal-prod-stock').value, 10) || 0,
       unit: document.getElementById('modal-prod-unit').value.trim(),
       netWeight: document.getElementById('modal-prod-unit').value.trim(),
-      image: document.getElementById('modal-prod-image').value.trim() || '/assets/aistudio/Todoslosproductos_21bbed5e.jpg',
+      image: document.getElementById('modal-prod-image').value.trim() || '/multimedia/Todoslosproductos.jpg',
       badge: document.getElementById('modal-prod-badge').value.trim(),
       description: document.getElementById('modal-prod-desc').value.trim(),
       ingredients: document.getElementById('modal-prod-ingredients').value.trim(),
